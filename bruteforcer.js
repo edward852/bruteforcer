@@ -156,7 +156,7 @@ Bruteforcer.prototype.startFrom = function(caseIdx)
 
 		this.curLen = len;
 
-		let cases = seqsInfo.accCases;
+		let cases = 0;
 		for (let seqInfo of seqsInfo.info)
 		{
 			if (seqInfo.accCases <= caseIdx)
