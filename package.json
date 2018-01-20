@@ -1,0 +1,24 @@
+{
+  "name": "bruteforcer",
+  "version": "1.0.0",
+  "description": "Enumerating all possible candidates for a problem to find the solution",
+  "main": "bruteforcer.js",
+  "homepage": "https://github.com/edward852/bruteforcer",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/edward852/bruteforcer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edward852/bruteforcer/issues"
+  },
+  "scripts": {
+    "test": "node ./test.js 1 && node ./test.js 2"
+  },
+  "keywords": [
+    "brute",
+    "force",
+    "bruteforce"
+  ],
+  "author": "edward852 <edward852@163.com>",
+  "license": "MIT"
+}
