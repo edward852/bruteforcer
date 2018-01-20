@@ -177,30 +177,15 @@ Bruteforcer.prototype.startFrom = function(caseIdx)
 			let seq = seqInfo.seq;
 			let gfuncs = seqInfo.gfuncs;
 			let candidate = this.candidate;
+			let indices = getStartIndices(caseIdx-cases, c, seq);
 
+			for (let idx in indices)
+			{
+				gfuncs[idx] = genCharSeq(c[idx], seq[idx], indices[idx]);
+			}
 			for (let idx=cnt-2; 0<=idx; idx--)
 			{
 				candidate[idx] = gfuncs[idx].next().value;
-			}
-			
-			// todo: genCharSeq supports generating from specified index and we may utilize this.
-			while (cases < caseIdx)
-			{
-				for (let idx=cnt-1; 0<=idx; idx--)
-				{
-					let nxtRes = gfuncs[idx].next();
-
-					if (!nxtRes.done)
-					{
-						candidate[idx] = nxtRes.value;
-						break;
-					}
-
-					gfuncs[idx] = genCharSeq(c[idx], seq[idx]);
-					candidate[idx] = gfuncs[idx].next().value;
-				}
-
-				cases++;
 			}
 
 			break;
@@ -242,6 +227,28 @@ Bruteforcer.prototype.getCaseNumber = function()
 function isArray(o)
 {
 	return Object.prototype.toString.call(o) === '[object Array]';
+}
+
+function getStartIndices(offset, chars, seq)
+{
+	let cnt = seq.length;
+	let product = 1;
+	let prodArr = new Array(cnt);
+	let indices = new Array(cnt);
+
+	for (let idx=cnt-1; 0<=idx; idx--)
+	{
+		prodArr[idx] = product;
+		product *= Math.pow(chars[idx].length, seq[idx]);
+	}
+
+	for (let idx=0; idx<cnt; idx++)
+	{
+		indices[idx] = parseInt(offset/prodArr[idx]);
+		offset = offset % prodArr[idx];
+	}
+
+	return indices;
 }
 
 function getNumSeqWithSum(sum, cnt)
