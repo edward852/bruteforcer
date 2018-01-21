@@ -1,6 +1,6 @@
 {
   "name": "bruteforcer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enumerating all possible candidates for a problem to find the solution",
   "main": "bruteforcer.js",
   "homepage": "https://github.com/edward852/bruteforcer",
