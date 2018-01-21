@@ -144,19 +144,18 @@ Bruteforcer.prototype.startFrom = function(caseIdx)
 
 	this.curLen = this.min;
 	this.curSeq = 0;
-	let seqChg = false;
+	let cases = 0;
 	for (let len=this.min; len<=this.max; len++)
 	{
 		let seqsInfo = this.seqsInfo[len];
 
 		if (seqsInfo.accCases <= caseIdx)
 		{
+			cases = seqsInfo.accCases;
 			continue;
 		}
 
 		this.curLen = len;
-
-		let cases = 0;
 		for (let seqInfo of seqsInfo.info)
 		{
 			if (seqInfo.accCases <= caseIdx)
@@ -164,12 +163,6 @@ Bruteforcer.prototype.startFrom = function(caseIdx)
 				cases = seqInfo.accCases;
 				this.curSeq++;
 				continue;
-			}
-
-			if (cases == caseIdx)
-			{
-				seqChg = true;
-				break;
 			}
 
 			let c = this.chars;
@@ -195,7 +188,7 @@ Bruteforcer.prototype.startFrom = function(caseIdx)
 	}
 
 	this.caseIdx = caseIdx;
-	this.seqChg = seqChg;
+	this.seqChg = false;
 	this.stopped = false;
 
 	setImmediate( () => { this.start.call(this) } );

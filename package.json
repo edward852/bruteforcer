@@ -12,7 +12,7 @@
     "url": "https://github.com/edward852/bruteforcer/issues"
   },
   "scripts": {
-    "test": "node ./test.js 1 && node ./test.js 2"
+    "test": "node ./test.js"
   },
   "keywords": [
     "brute",
